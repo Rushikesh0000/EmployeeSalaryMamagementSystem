@@ -19,17 +19,14 @@ import Employee.model.EmployeeModel;
 import Employee.model.SalaryModel;
 import EmployeePanel.EmployeeloginModel;
 
-public class AdminApp 
-{
-	public static void main(String[] x) throws SQLException
-	{
+public class AdminApp {
+	public static void main(String[] x) throws SQLException {
 		int choice = 0, choice1 = 0;
-		
+
 		float DayBySalary = 0;
-		
+
 		int id, contact, pid;
 		String name, email, gender, adress, username, Userpassword;
-		
 
 		AdminLogin admin = null;
 
@@ -38,9 +35,9 @@ public class AdminApp
 		EmployeeModel model;
 
 		do {
-			System.out.println("Welcome");
+			System.out.println("Wel");
 
-			System.out.println("Enter 1: For Admin Loginnnnnn");
+			System.out.println("Enter 1: For Admin Login");
 			System.out.println("Enter 2: For Employee Login.");
 
 			System.out.println("Enter your Choice..........");
@@ -50,9 +47,8 @@ public class AdminApp
 			EmployeeWorkServices es1 = new EmployeeWorkServices();
 			AttendanceService es2 = new AttendanceService();
 
-			switch (choice)
-			{
-              case 1:
+			switch (choice) {
+			case 1:
 				sc.nextLine();
 				System.err.println("Enter UserName:");
 				String user = sc.nextLine();// admin
@@ -60,14 +56,12 @@ public class AdminApp
 				System.err.println("Enter Password:");
 				String password = sc.nextLine();// 1212
 
-				if (es.getAdmin() != null)
-				{
-					System.out.println("Verification Steps:");
+				if (es.getAdmin() != null) {
+					System.out.println("Verification Step's:");
 
 					admin = es.getAdmin();
 
-					if (admin.getUsername().equals(user) && admin.getPassword().equals(password)) 
-					{
+					if (admin.getUsername().equals(user) && admin.getPassword().equals(password)) {
 
 						System.err.println("Verified");
 						System.out.println();
@@ -86,13 +80,13 @@ public class AdminApp
 
 							choice1 = sc.nextInt();
 
-							switch (choice1) 
-							{
+							switch (choice1) {
 							case 1:
 								sc.nextLine();
 
-								System.out.println("Enter     Eid   Econtact    EName     EEmail    EGender       EAdress  Username  Password     Employee Position");
-								
+								System.out.println(
+										"Enter     Eid   Econtact    EName     EEmail    EGender       EAdress  Username  Password     Employee Position");
+
 								id = sc.nextInt();
 								contact = sc.nextInt();
 								sc.nextLine();
@@ -105,18 +99,16 @@ public class AdminApp
 
 								pid = sc.nextInt();
 
-								EmployeeModel modell = new EmployeeModel(id, name, contact, email, gender, adress,username, Userpassword, pid);
-								
+								EmployeeModel modell = new EmployeeModel(id, name, contact, email, gender, adress,
+										username, Userpassword, pid);
+
 								System.out.println();
 
 								int result = es.addEmployee(modell);
 
-								if (result == 1) 
-								{
+								if (result == 1) {
 									System.err.println("Successfully Added............................");
-								}
-								else
-								{
+								} else {
 									System.err.println("Some problem is HERE............................");
 									System.out.println();
 								}
@@ -262,9 +254,9 @@ public class AdminApp
 									list2 = ss.totalSalary(id2, name1, Month);
 
 									if (list2 != null) {
-										for (SalaryModel sl : list2)
-										{
-											System.out.println("Employee Id                 Employee Name            Annual Package         Total Working Days");
+										for (SalaryModel sl : list2) {
+											System.out.println(
+													"Employee Id                 Employee Name            Annual Package         Total Working Days");
 
 											System.err.println(sl.getId() + "\t\t\t\t\t" + sl.getName() + "\t\t\t\t\t"
 													+ sl.getAnnualPackage() + "\t\t\t\t\t" + sl.getCount());
@@ -275,28 +267,23 @@ public class AdminApp
 											System.out.println();
 
 										}
-										
-									} 
-									else
-									{
+
+									} else {
 										System.err.println("Data Not Found");
 									}
-								} 
-								catch (Exception ex)
-								{
+								} catch (Exception ex) {
 									System.out.println("Exception is " + ex);
 								}
 								break;
 
 							case 8:
-						
+
 								sc.nextLine();
 
-								int pack=0;
-								
-								EmployeeSalaryRepositary ess=new EmployeeSalaryRepositary( );
-						
-								
+								int pack = 0;
+
+								EmployeeSalaryRepositary ess = new EmployeeSalaryRepositary();
+
 								System.out.println("Enter     id        Start Date (YY-MM-DD)         End Date");
 
 								int id3 = sc.nextInt();
@@ -308,43 +295,35 @@ public class AdminApp
 								EmployeeSalaryService s = new EmployeeSalaryService();
 
 								float value = s.DateWiseSalary(id3, StartDate, EndDate, count);
-							
-								if(value>0)
-								{
-									int pac=ess.getPackage(pack,id3);
-									
-									DayBySalary=value*(pac/365);
-									
-									System.err.println("The Sallary is="+DayBySalary);
-									System.err.println();                                        
-									
-								}
-								else
-								{
+
+								if (value > 0) {
+									int pac = ess.getPackage(pack, id3);
+
+									DayBySalary = value * (pac / 365);
+
+									System.err.println("The Sallary is=" + DayBySalary);
+									System.err.println();
+
+								} else {
 									System.err.println("There Are Some Problem");
 								}
-					
+
 								break;
 
 							}
-						} while (choice1<=8);
-					} 
-					else
-					{
+						} while (choice1 <= 8);
+					} else {
 						System.err.println("Incorrect UserName and Password");
 					}
 				}
 
-				else
-				{
+				else {
 					System.err.println("Please Register..............................!");
 				}
 
 				break;
 
 			case 2:
-			
-
 
 				break;
 			}
