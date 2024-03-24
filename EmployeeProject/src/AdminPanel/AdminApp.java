@@ -39,7 +39,7 @@ public class AdminApp
 
 		do {
 
-			System.out.println("Enter 1: For Admin Login.");
+			System.out.println("Enter 1: For Admin Loginnnnnn");
 			System.out.println("Enter 2: For Employee Login.");
 
 			System.out.println("Enter your Choice..........");
