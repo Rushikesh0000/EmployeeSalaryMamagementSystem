@@ -1,1 +1,1 @@
-# EmployeeSalaryMamagementSystem
+# EmployeeSalaryManagementSystem
